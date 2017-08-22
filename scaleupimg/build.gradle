@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'//添加
+
+
+//添加
+publish {
+    userOrg = 'tmac1999'//bintray.com用户名
+    groupId = 'com.cnfol.android'//jcenter上的路径
+    artifactId = 'ScaleUpImg'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'a android effect about scaling up a ImageView gradually'//描述，不重要
+    website = 'https://github.com/tmac1999/ScaleUpImgActivity'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
+}
